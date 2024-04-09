@@ -16,6 +16,13 @@ balances traffic at Layer 7 of the OSI model.
 
 ## Choosing Load Balancer Type 
 
+The AWS Elastic Load Balancing portfolio supports the following load balancers: Application Load Balancers (ALB), Network Load Balancers (NLB), Gateway Load Balancers (GWLB), and Classic Load Balancers (CLB). This best practices section will focus on the ALB and NLB which are the two which are most relevant for EKS Clusters. 
+
+The main consideration in choosing the type of load balancer is the workload requirements.
+
+For more detailed information and as a reference for all AWS Load balancers, see [Product Comparisons](https://aws.amazon.com/elasticloadbalancing/features/#Product_comparisons) 
+
+
 ### Choose the Application Load Balancer (ALB) if your workload is  HTTP/HTTPS
 
 If a workloads requires load balancing at Layer 7 of the OSI Model, the AWS Load 
@@ -26,10 +33,9 @@ The ALB provides customers with the flexibility to change the application traffi
 routing algorithm; the default routing algorithm is round robin with the least outstanding requests routing algorithm also an alternative.
 
 
-### Choose the Network Load Balancer (NLB) if your workload is TCP, or HTTPS but requires backend SSL passthrough
+### Choose the Network Load Balancer (NLB) if your workload is TCP, or if your workload requires Source IP Preservation of Clients
 
-A Network Load Balancer functions at the fourth layer (Transport) of the Open Systems
- Interconnection (OSI) model. It can also handle millions of requests per second (RPS). 
+A Network Load Balancer functions at the fourth layer (Transport) of the Open Systems Interconnection (OSI) model. It is suited for TCP & UDP based workloads. Network Load Balancer also by default preserves the Source IP of address of the clients when presenting the traffic to the pod.
 
 
 ### Choose the Network Load Balancer (NLB) if your workload cannot utilize DNS
