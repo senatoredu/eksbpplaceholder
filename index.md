@@ -155,7 +155,7 @@ Just like Pod creation, it is imperative to understand what is the sequence of e
 
 ---
 
-<details <summary title="Click here to visit the documentation (opens in a new tab)">**Documentation**</summary>>
+<details> <summary title="Click here to visit the documentation (opens in a new tab)">**Documentation**</summary>>
   Content of the expandable section...
 </details>
 
