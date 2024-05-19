@@ -155,9 +155,7 @@ Just like Pod creation, it is imperative to understand what is the sequence of e
 
 ---
 
-!!! Info Pod Deletion
-
-Just like Pod creation, it is imperative to understand what is the sequence of events during Pod deletion. Let’ s talk about the sequence of events. 
+!!! info Pod Deletion: Just like Pod creation, it is imperative to understand what is the sequence of events during Pod deletion. Let’ s talk about the sequence of events. 
 
 1. A Pod deletion request is sent to the Kubernetes API server (i.e. by a `kubectl` command, or Deployment update, or scaling action). 
 2. Kubernetes API server https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination, which is 30 seconds by default, by setting the [deletionTimestamp](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion) field in the Pod object. (Grace period can be configured in Pod spec through `terminationGracePeriodSeconds`)
