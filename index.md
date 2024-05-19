@@ -155,7 +155,7 @@ Just like Pod creation, it is imperative to understand what is the sequence of e
 
 ---
 
-!!! Pod Deletion
+!!! Info Pod Deletion
 
 Just like Pod creation, it is imperative to understand what is the sequence of events during Pod deletion. Let’ s talk about the sequence of events. 
 
