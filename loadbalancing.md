@@ -193,7 +193,8 @@ Configure a [Pod Disruption Budget](https://kubernetes.io/docs/concepts/workload
 * KubeCon Europe 2019 Session - [Ready? A Deep Dive into Pod Readiness Gates for Service Health](https://www.youtube.com/watch?v=Vw9GmSeomFg) 
 * Book - [Kubernetes in Action](https://www.amazon.com/Kubernetes-Action-Marko-Luksa/dp/1617293725/) 
 * AWS Blog - [How to rapidly scale your application with ALB on EKS (without losing traffic)](https://aws.amazon.com/blogs/containers/how-to-rapidly-scale-your-application-with-alb-on-eks-without-losing-traffic/)
-* Pod Deletion
+  
+!!! Pod Deletion
 
 Just like Pod creation, it is imperative to understand what is the sequence of events during Pod deletion. Let’ s talk about the sequence of events. 
 
