@@ -155,16 +155,10 @@ Just like Pod creation, it is imperative to understand what is the sequence of e
 
 ---
 
-!!! info Pod Deletion: Just like Pod creation, it is imperative to understand what is the sequence of events during Pod deletion. Let’ s talk about the sequence of events. 
+<details <summary title="Click here to visit the documentation (opens in a new tab)">**Documentation**</summary>>
+  Content of the expandable section...
+</details>
 
-1. A Pod deletion request is sent to the Kubernetes API server (i.e. by a `kubectl` command, or Deployment update, or scaling action). 
-2. Kubernetes API server https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination, which is 30 seconds by default, by setting the [deletionTimestamp](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion) field in the Pod object. (Grace period can be configured in Pod spec through `terminationGracePeriodSeconds`)
-3. The `kubelet` process running on the node receives the update (via watch) on the Pod object and sends a [SIGTERM](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGTERM) signal to process identifier 1 (PID 1) inside each container in that Pod. It then watches the `terminationGracePeriodSeconds`.
-4. The [EndpointSlice Controller](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager) also receives the update (via `watch`) from Step 2 and sets the endpoint condition to “terminating”  in the [EndpointSlice](https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/#conditions) object (list of Pod IPs) of the respective Kubernetes Service. 
-5. [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy) process on each node receives the update (via `watch`) on the EndpointSlice object then [iptables](https://en.wikipedia.org/wiki/Iptables) rules on each node get updated by the kube-proxy to stop forwarding clients requests to the Pod.
-6. When the `terminationGracePeriodSeconds` expires then the `kubelet` sends  [SIGKILL](https://en.wikipedia.org/wiki/Signal_(IPC)#SIGKILL)  signal to the parent process of each container in the Pod and forcibly terminates them. 
-7. [TheEndpointSlice Controller](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager) removes the endpoint from the [EndpointSlice](https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/#conditions) object.
-8. API server deletes the Pod object. 
 
 
 ### Gracefully shutdown applications
